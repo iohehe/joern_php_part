@@ -98,7 +98,7 @@ import ast.statements.jump.ContinueStatement;
 import ast.statements.jump.GotoStatement;
 import ast.statements.jump.ReturnStatement;
 import ast.statements.jump.ThrowStatement;
-//import cg.PHPCGFactory;
+import cg.CGCreator;
 import csv.PHPCSVNodeTypes;
 import csv.PHPCSVNodeTypes;
 import csv.KeyedCSV.KeyedCSVRow;
@@ -1570,7 +1570,7 @@ public class PHPCSVNodeInterpreter implements CSVRowInterpreter
 		// we add the created node to the PHP call graph factory's list of function calls;
 		// hence we get a list of all function calls without any additional traversals of
 		// the final AST
-//		PHPCGFactory.addFunctionCall(newNode);
+		CGCreator.addFunctionCall(newNode);
 		
 		return id;
 	}
@@ -1737,7 +1737,7 @@ public class PHPCSVNodeInterpreter implements CSVRowInterpreter
 		// we add the created node to the PHP call graph factory's list of constructor calls;
 		// hence we get a list of all constructor calls without any additional traversals of
 		// the final AST
-//		PHPCGFactory.addFunctionCall(newNode);
+		CGCreator.addFunctionCall(newNode);
 
 		return id;
 	}
@@ -2210,7 +2210,7 @@ public class PHPCSVNodeInterpreter implements CSVRowInterpreter
 		// we add the created node to the PHP call graph factory's list of non-static method calls;
 		// hence we get a list of all non-static method calls without any additional traversals of
 		// the final AST
-//		PHPCGFactory.addFunctionCall(newNode);
+		CGCreator.addFunctionCall(newNode);
 
 		return id;
 	}
@@ -2239,7 +2239,7 @@ public class PHPCSVNodeInterpreter implements CSVRowInterpreter
 		// we add the created node to the PHP call graph factory's list of static method calls;
 		// hence we get a list of all static method calls without any additional traversals of
 		// the final AST
-//		PHPCGFactory.addFunctionCall(newNode);
+		CGCreator.addFunctionCall(newNode);
 		
 		return id;
 	}
