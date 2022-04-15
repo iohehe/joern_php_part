@@ -48,7 +48,7 @@ public class CSVFunctionExtractor {
         {
             assert csvStack.empty();
             addNodeRowsUntilNextFile();
-            addNodeRowsUntilNextFile();
+            addEdgeRowsUntilNextFile();
         }
 
         FunctionDefBase function = null;

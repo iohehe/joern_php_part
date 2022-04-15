@@ -20,7 +20,7 @@ public class CSV2AST
 
 	public CSV2AST() {
 		this.nodeInterpreter = new PHPCSVNodeInterpreter();
-		this.edgeInterpreter = new PHPCSVNodeInterpreter();
+		this.edgeInterpreter = new PHPCSVEdgeInterpreter();
 	}
 	public FunctionDefBase convert(String nodeFilename, String edgeFilename)
 			throws IOException, InvalidCSVFile
@@ -48,7 +48,7 @@ public class CSV2AST
 		return convert(csvAST);
 	}
 
-	public FunctionDefBase convert(csv.csv2ast.CSVAST csvAST)
+	public FunctionDefBase convert(CSVAST csvAST)
 			throws IOException, InvalidCSVFile
 	{
 		ASTUnderConstruction ast = new ASTUnderConstruction();
