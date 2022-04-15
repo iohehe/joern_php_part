@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import cfg.nodes.CFGNode;
-import graphutils.Edge;
+import tools.graphutils.Edge;
 
 public class CFGEdge extends Edge<CFGNode>
 {

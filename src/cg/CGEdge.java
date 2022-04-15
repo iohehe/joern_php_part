@@ -1,6 +1,6 @@
 package cg;
 
-import graphutils.Edge;
+import tools.graphutils.Edge;
 
 public class CGEdge extends Edge<CGNode> {
 

@@ -9,7 +9,7 @@ import cfg.nodes.CFGErrorNode;
 import cfg.nodes.CFGExceptionNode;
 import cfg.nodes.CFGExitNode;
 import cfg.nodes.CFGNode;
-import graphutils.IncidenceListGraph;
+import tools.graphutils.IncidenceListGraph;
 
 /**
  * Control Flow Graph. Consider this to be the target format of CFGFactories.

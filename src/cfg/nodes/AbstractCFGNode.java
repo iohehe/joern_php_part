@@ -3,7 +3,7 @@ package cfg.nodes;
 import java.util.HashMap;
 import java.util.Map;
 
-import databaseNodes.NodeKeys;
+import tools.databaseNodes.NodeKeys;
 
 public abstract class AbstractCFGNode implements CFGNode
 {

@@ -1,6 +1,6 @@
 package cg;
 
-import graphutils.IncidenceListGraph;
+import tools.graphutils.IncidenceListGraph;
 
 /**
  * Call Graph. Consider this to be the target format of CGFactories.

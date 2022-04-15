@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import misc.MultiHashMap;
+import tools.misc.MultiHashMap;
 
 /**
  * A CFG decorated with USE and DEFs suitable to determine reaching definitions.

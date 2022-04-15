@@ -6,7 +6,7 @@ import java.util.List;
 
 import ddg.DataDependenceGraph.DDG;
 import ddg.DefUseCFG.DefUseCFG;
-import misc.HashMapOfSets;
+import tools.misc.HashMapOfSets;
 
 public class DDGCreator
 {

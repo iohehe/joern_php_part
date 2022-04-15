@@ -1,0 +1,6 @@
+start	end	type	var
+12	21	REACHES	a
+12	26	REACHES	a
+12	34	REACHES	a
+26	41	REACHES	b
+34	41	REACHES	b

@@ -9,7 +9,6 @@ import ast.php.functionDef.FunctionDef;
 import cfg.CFG;
 import cfg.CFGConverter;
 
-
 import udg.CFGToUDGConverter;
 import udg.useDefGraph.UseDefGraph;
 
@@ -20,6 +19,13 @@ import ddg.DataDependenceGraph.DDG;
 
 import cg.CG;
 import cg.CGCreator;
+
+import output.common.Writer;
+import output.csv.MultiPairCSVWriterImpl;
+import output.csv.exporters.CSVCFGExporter;
+import output.csv.exporters.CSVCGExporter;
+import output.csv.exporters.CSVDDGExporter;
+
 
 public class Joern {
     // extract every function from the csv and recover it to ast
@@ -35,16 +41,24 @@ public class Joern {
     static CFGAndUDGToDefUseCFG udgAndCfgToDefUseCFG = new CFGAndUDGToDefUseCFG();
     static DDGCreator ddgCreator = new DDGCreator();
 
-    // analyze call graph
-
+    // output
+    static CSVCFGExporter csvCFGExporter = new CSVCFGExporter();
+    static CSVDDGExporter csvDDGExporter = new CSVDDGExporter();
+    static CSVCGExporter csvCGExporter = new CSVCGExporter();
 
     public static void main(String[] args) throws IOException, InvalidCSVFile {
         String nodeFileName = "demos/nodes.csv";
         String relFileName = "demos/rels.csv";
 
+        // init input
         FileReader nodeFileReader = new FileReader(nodeFileName);
         FileReader relFileNameReadeer = new FileReader(relFileName);
         extractor.initialize(nodeFileReader, relFileNameReadeer);
+
+        // init output
+        MultiPairCSVWriterImpl csvWriter = new MultiPairCSVWriterImpl();
+        csvWriter.openEdgeFile( ".", "cpg_edges.csv");
+        Writer.setWriterImpl( csvWriter);
 
         // let's go... :)
         FunctionDef root_node;
@@ -65,6 +79,7 @@ public class Joern {
             DDG ddg = ddgCreator.createForDefUseCFG(defUseCFG);
             System.out.println("~~~~~~~~~~");
             System.out.println(ddg.toString());
+            csvDDGExporter.writeDDGEdges(ddg);
 
             // cg
             CGCreator.addFunctionDef(root_node);
@@ -72,6 +87,8 @@ public class Joern {
 
         //
         CG cg = CGCreator.createCG();
+        csvCGExporter.writeCGEdges(cg);
+        csvWriter.closeEdgeFile();
     }
 }
 

@@ -16,7 +16,7 @@ import ast.php.functionDef.Method;
 import ast.php.functionDef.FunctionDef;
 import ast.php.functionDef.TopLevelFunctionDef;
 import csv.PHPCSVNodeTypes;
-import misc.MultiHashMap;
+import tools.misc.MultiHashMap;
 
 public class CGCreator {
 

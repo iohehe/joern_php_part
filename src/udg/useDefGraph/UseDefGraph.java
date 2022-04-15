@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Set;
 
 import ast.ASTNode;
-import misc.MultiHashMap;
+import tools.misc.MultiHashMap;
 
 public class UseDefGraph
 {

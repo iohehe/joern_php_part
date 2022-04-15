@@ -11,7 +11,7 @@ import cfg.CFGEdge;
 import cfg.nodes.ASTNodeContainer;
 import cfg.nodes.CFGNode;
 import ddg.DefUseCFG.DefUseCFG;
-import misc.MultiHashMap;
+import tools.misc.MultiHashMap;
 import udg.useDefGraph.UseDefGraph;
 import udg.useDefGraph.UseOrDefRecord;
 

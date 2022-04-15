@@ -31,7 +31,7 @@ import ast.statements.jump.ContinueStatement;
 import ast.statements.jump.GotoStatement;
 import ast.statements.jump.ReturnStatement;
 import ast.statements.jump.ThrowStatement;
-import databaseNodes.FileDatabaseNode;
+import tools.databaseNodes.FileDatabaseNode;
 
 public abstract class ASTNodeVisitor
 {
