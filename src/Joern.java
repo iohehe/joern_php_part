@@ -23,8 +23,8 @@ public class Joern {
     static CFGToUDGConverter cfgToUDG = new CFGToUDGConverter();
 
     public static void main(String[] args) throws IOException, InvalidCSVFile {
-        String nodeFileName = "/Users/he/cpg/mantisbt_cpg/nodes.csv";
-        String relFileName = "/Users/he/cpg/mantisbt_cpg/rels.csv";
+        String nodeFileName = "demos/nodes.csv";
+        String relFileName = "demos/rels.csv";
 
         FileReader nodeFileReader = new FileReader(nodeFileName);
         FileReader relFileNameReadeer = new FileReader(relFileName);
@@ -42,6 +42,7 @@ public class Joern {
 
             // udg
             UseDefGraph udg = cfgToUDG.convert(cfg);
+            System.out.println(udg.toString());
         }
     }
 }

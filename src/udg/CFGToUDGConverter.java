@@ -13,7 +13,7 @@ import udg.useDefGraph.UseOrDef;
 
 public class CFGToUDGConverter
 {
-	private ASTDefUseAnalyzer astAnalyzer;
+	private ASTDefUseAnalyzer astAnalyzer = new PHPASTDefUseAnalyzer();
 
 	public UseDefGraph convert(CFG cfg)
 	{
