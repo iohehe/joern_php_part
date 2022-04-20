@@ -53,6 +53,7 @@ public class CFGConverter
 
 
 	public CFG convert(FunctionDefBase functionDefinition) {
+		// create cfg
 		CFG cfg = newInstance(functionDefinition);
 
 		// for PHP, we additionally set the node ids for the function entry and exit nodes:

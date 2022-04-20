@@ -4,10 +4,10 @@ This is a copy of [octopus-platform/joern](https://github.com/octopus-platform/j
 
 
 
-
-
 ## PHP Joern Lab Version
 
+- [ ]: The branches dataflow is error
+- [ ]: Missing control flow in edge to exit node and out edge for entry node
 
 
 - [ ] Foreach Issue:
@@ -37,7 +37,7 @@ This is a copy of [octopus-platform/joern](https://github.com/octopus-platform/j
   5	13	REACHES	arr  //5 the statement of line 2, 13 is the AST_VAR of $arr
   ```
 
-  - Current solution way
+  - Current solution methods
 
     Actually, I don't know how to solve this question in a normal way.
 

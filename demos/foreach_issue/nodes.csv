@@ -25,4 +25,3 @@ id:int	labels:label	type	flags:string_array	lineno:int	code	childnum:int	funcid:
 23	AST	AST_ECHO		7		1	1		""			
 24	AST	AST_VAR		7		0	1		""			
 25	AST	string		7	"v"	0	1		""			
-26	AST	NULL		1		2	1		""			

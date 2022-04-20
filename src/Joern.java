@@ -47,8 +47,8 @@ public class Joern {
     static CSVCGExporter csvCGExporter = new CSVCGExporter();
 
     public static void main(String[] args) throws IOException, InvalidCSVFile {
-        String nodeFileName = "demos/foreach_issue/nodes.csv";
-        String relFileName = "demos/foreach_issue/rels.csv";
+        String nodeFileName = "/Users/he/cpg/taint_cases/03/nodes.csv";
+        String relFileName = "/Users/he/cpg/taint_cases/03/rels.csv";
 
         // init input
         FileReader nodeFileReader = new FileReader(nodeFileName);
@@ -77,8 +77,6 @@ public class Joern {
             // ddg
             DefUseCFG defUseCFG = udgAndCfgToDefUseCFG.convert(cfg, udg);
             DDG ddg = ddgCreator.createForDefUseCFG(defUseCFG);
-            System.out.println("~~~~~~~~~~");
-            System.out.println(ddg.toString());
             csvDDGExporter.writeDDGEdges(ddg);
 
             // cg
