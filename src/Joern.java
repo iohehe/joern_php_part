@@ -47,8 +47,8 @@ public class Joern {
     static CSVCGExporter csvCGExporter = new CSVCGExporter();
 
     public static void main(String[] args) throws IOException, InvalidCSVFile {
-        String nodeFileName = "/Users/he/cpg/taint_cases/03/nodes.csv";
-        String relFileName = "/Users/he/cpg/taint_cases/03/rels.csv";
+        String nodeFileName = "/Users/he/cpg/taint_cases/04/nodes.csv";
+        String relFileName = "/Users/he/cpg/taint_cases/04/rels.csv";
 
         // init input
         FileReader nodeFileReader = new FileReader(nodeFileName);
@@ -68,6 +68,7 @@ public class Joern {
 
             //cfg
             CFG cfg = ast2cfgConverter.convert(root_node);
+            csvCFGExporter.writeCFGEdges(cfg);
             //System.out.println(cfg);
 
             // udg
