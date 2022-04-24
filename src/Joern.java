@@ -47,8 +47,8 @@ public class Joern {
     static CSVCGExporter csvCGExporter = new CSVCGExporter();
 
     public static void main(String[] args) throws IOException, InvalidCSVFile {
-        String nodeFileName = "/Users/he/cpg/taint_cases/04/nodes.csv";
-        String relFileName = "/Users/he/cpg/taint_cases/04/rels.csv";
+        String nodeFileName = "/Users/he/cpg/fix_cpg/if/nodes.csv";
+        String relFileName = "/Users/he/cpg/fix_cpg/if/rels.csv";
 
         // init input
         FileReader nodeFileReader = new FileReader(nodeFileName);

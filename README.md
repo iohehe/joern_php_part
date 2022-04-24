@@ -6,10 +6,6 @@ This is a copy of [octopus-platform/joern](https://github.com/octopus-platform/j
 
 ## PHP Joern Lab Version
 
-- [ ]: The branches dataflow is error
-- [ ]: Missing control flow in edge to exit node and out edge for entry node
-
-
 - [ ] Foreach Issue:
 
   Demo:
