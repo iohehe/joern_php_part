@@ -52,6 +52,7 @@ public class PHPCSVNodeTypes
 	// (e.g., a function node that does not specify its return type in
 	// its declaration; see TestPHPCSVASTBuilderMinimal for more examples.)
 	public static final String TYPE_NULL = "NULL";
+	public static final String TYPE_NULLABLE = "AST_NULLABLE_TYPE";
 	
 	// primary expressions (leafs)
 	public static final String TYPE_INTEGER = "integer";

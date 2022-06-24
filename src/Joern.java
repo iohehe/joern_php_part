@@ -47,9 +47,8 @@ public class Joern {
     static CSVCGExporter csvCGExporter = new CSVCGExporter();
 
     public static void main(String[] args) throws IOException, InvalidCSVFile {
-        String nodeFileName = "/Users/he/cpg/fix_cpg/if/nodes.csv";
-        String relFileName = "/Users/he/cpg/fix_cpg/if/rels.csv";
-
+        String nodeFileName = "/Users/he/www/works/facturascripts-cpg/Core/Base/nodes.csv";
+        String relFileName = "/Users/he/www/works/facturascripts-cpg/Core/Base/rels.csv";
         // init input
         FileReader nodeFileReader = new FileReader(nodeFileName);
         FileReader relFileNameReadeer = new FileReader(relFileName);
@@ -59,34 +58,28 @@ public class Joern {
         MultiPairCSVWriterImpl csvWriter = new MultiPairCSVWriterImpl();
         csvWriter.openEdgeFile( ".", "cpg_edges.csv");
         Writer.setWriterImpl( csvWriter);
-
         // let's go... :)
         FunctionDef root_node;
         while((root_node = (FunctionDef)extractor.getNextFunction()) != null)
         {
             //System.out.println(root_node);
-
             //cfg
             CFG cfg = ast2cfgConverter.convert(root_node);
             csvCFGExporter.writeCFGEdges(cfg);
             //System.out.println(cfg);
-
             // udg
             UseDefGraph udg = cfgToUDG.convert(cfg);
             //System.out.println(udg.toString());
-
             // ddg
             DefUseCFG defUseCFG = udgAndCfgToDefUseCFG.convert(cfg, udg);
             DDG ddg = ddgCreator.createForDefUseCFG(defUseCFG);
             csvDDGExporter.writeDDGEdges(ddg);
-
             // cg
-            CGCreator.addFunctionDef(root_node);
+            //CGCreator.addFunctionDef(root_node);
         }
-
-        //
-        CG cg = CGCreator.createCG();
-        csvCGExporter.writeCGEdges(cg);
+        // cg
+        //CG cg = CGCreator.createCG();
+        //csvCGExporter.writeCGEdges(cg);
         csvWriter.closeEdgeFile();
     }
 }

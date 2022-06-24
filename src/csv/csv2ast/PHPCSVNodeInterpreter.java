@@ -119,6 +119,7 @@ public class PHPCSVNodeInterpreter implements CSVRowInterpreter
 		{
 			// null nodes (leafs)
 			case PHPCSVNodeTypes.TYPE_NULL:
+			case PHPCSVNodeTypes.TYPE_NULLABLE:
 				retval = handleNull(row, ast);
 				break;
 

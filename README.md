@@ -50,4 +50,10 @@ This is a copy of [octopus-platform/joern](https://github.com/octopus-platform/j
 
     If you have a better solution method, please tell me, THX~.
 
+
+```
+6.24: Fix Bug
+Issue: No node AST_NULLABLE_TYPE
+Fix: Just make it as a null not and ignore it on the cpg.
+```
     

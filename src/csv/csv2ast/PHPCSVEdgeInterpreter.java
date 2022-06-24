@@ -139,6 +139,8 @@ public class PHPCSVEdgeInterpreter implements CSVRowInterpreter
 		String type = startNode.getProperty(PHPCSVNodeTypes.TYPE.getName());
 		switch (type)
 		{
+			case PHPCSVNodeTypes.TYPE_NULLABLE:
+				break;
 			// - null nodes (leafs)
 			// - primary expressions (leafs)
 			case PHPCSVNodeTypes.TYPE_NULL:
