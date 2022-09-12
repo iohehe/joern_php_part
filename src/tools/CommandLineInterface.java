@@ -1,11 +1,22 @@
-package tools.php.ast2cpg;
+package tools;
 
 import org.apache.commons.cli.ParseException;
 
-import tools.CommonCommandLineInterface;
 
-public class CommandLineInterface extends CommonCommandLineInterface
+import org.apache.commons.cli.BasicParser;
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.HelpFormatter;
+import org.apache.commons.cli.Options;
+
+
+public class CommandLineInterface
 {
+	protected Options options = new Options();
+	protected CommandLineParser parser = new BasicParser();
+	protected HelpFormatter formatter = new HelpFormatter();
+	protected CommandLine cmd = null;
+
 	String nodeFile;
 	String edgeFile;
 

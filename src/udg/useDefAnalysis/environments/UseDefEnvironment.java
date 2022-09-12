@@ -100,4 +100,25 @@ public class UseDefEnvironment
 		return retval;
 	}
 
+	//!iohex================ add to archieve index sensitive ===========
+	public String createSignature() {
+		String signature = "";
+		ASTProvider rChild = this.astProvider.getChild(1); // the child 1 of the ArrayIndex is the index expression.
+		signature = traverseAST(rChild, "");
+		return signature;
+	}
+
+	public String traverseAST(ASTProvider astNode, String sig) {
+		sig = sig + "_" + astNode.getEscapedCodeStr();
+		int numChildren = astNode.getChildCount();
+		for (int i = 0; i < numChildren; i++)
+		{
+			ASTProvider childProvider = astNode.getChild(i);
+			if (this.shouldTraverse(childProvider))
+				traverseAST(childProvider, sig);
+		}
+		return sig;
+	}
+	//!iohex================ add to archieve index sensitive ===========
+
 };

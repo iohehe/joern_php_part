@@ -406,7 +406,11 @@ public class PHPCSVEdgeInterpreter implements CSVRowInterpreter
 				errno = handleList((ListExpression)startNode, endNode, childnum);
 				break;
 			case PHPCSVNodeTypes.TYPE_ARRAY:
-				errno = handleArray((ArrayExpression)startNode, endNode, childnum);
+				try {
+					errno = handleArray((ArrayExpression) startNode, endNode, childnum);
+				}
+				catch (Exception e)
+				{}
 				break;
 			case PHPCSVNodeTypes.TYPE_ENCAPS_LIST:
 				errno = handleEncapsList((EncapsListExpression)startNode, endNode, childnum);
@@ -1945,7 +1949,12 @@ public class PHPCSVEdgeInterpreter implements CSVRowInterpreter
 		switch (childnum)
 		{
 			case 0: // exception child: Identifier node
-				startNode.setExceptionIdentifier((Identifier)endNode);
+				try {
+					startNode.setExceptionIdentifier((Identifier) endNode);
+				}
+				catch(Exception e)
+				{
+				}
 				break;
 			case 1: // var child: Variable node
 				startNode.setVariable((Variable)endNode);

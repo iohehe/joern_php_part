@@ -33,27 +33,31 @@ This is a copy of [octopus-platform/joern](https://github.com/octopus-platform/j
   5	13	REACHES	arr  //5 the statement of line 2, 13 is the AST_VAR of $arr
   ```
 
-  - Current solution methods
+ Current solution methods: Actually, I don't know how to solve this question in a normal way. So I personally move the control flow from the AST_FOREACH's first children AST_VAR(\$arr) to the AST_FOREACH.
+ I know that AST_FORACHE is a control node, but if I do this I can observe all of the children(\$arr, \$k, \$v) from the CFG.  Then I can  know the following assignments on the CFG:
 
-    Actually, I don't know how to solve this question in a normal way.
+   ```
+   $k = $arr;
+   $v = $arr;
+   ```
 
-    So I personally move the control flow from the AST_FOREACH's first children AST_VAR(\$arr) to the AST_FOREACH.
-
-    I know that AST_FORACHE is a control node, but if I do this I can observe all of the children(\$arr, \$k, \$v) from the CFG.
-
-    Then I can  know the following assignments on the CFG:
-
-    ```
-    $k = $arr;
-    $v = $arr;
-    ```
-
-    If you have a better solution method, please tell me, THX~.
+   If you have a better solution method, please tell me, THX~.
 
 
-```
-6.24: Fix Bug
+- 6.24: Fix Bug
 Issue: No node AST_NULLABLE_TYPE
 Fix: Just make it as a null not and ignore it on the cpg.
+
+
+- [X] Index Sensitive
+ 
+Demo
+```php
+<?php
+$a['id']['frist'] = $_GET;
+$a['id']['second'] = 1; 
+echo $a['id']['frist'];
+?>
 ```
-    
+To let the data dependency flow from `$a['id']['frist']` point to the `echo`, I change the key on the data flow's key as a_id_frist.
+Current solution method: during the use-define link analysis, the reportUpstream()'s envrioment is an `ArrayIndexing`, obtaing its right expression as the index expression and iterator to create a signature of the strings.

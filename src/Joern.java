@@ -1,6 +1,8 @@
 import java.io.FileReader;
 import java.io.IOException;
 
+import org.apache.commons.cli.ParseException;
+import tools.CommandLineInterface;
 import csv.CSVFunctionExtractor;
 import csv.KeyedCSV.exceptions.InvalidCSVFile;
 
@@ -26,8 +28,9 @@ import output.csv.exporters.CSVCFGExporter;
 import output.csv.exporters.CSVCGExporter;
 import output.csv.exporters.CSVDDGExporter;
 
-
 public class Joern {
+    static CommandLineInterface cmdLine = new CommandLineInterface();
+
     // extract every function from the csv and recover it to ast
     static CSVFunctionExtractor extractor = new CSVFunctionExtractor();
 
@@ -47,8 +50,11 @@ public class Joern {
     static CSVCGExporter csvCGExporter = new CSVCGExporter();
 
     public static void main(String[] args) throws IOException, InvalidCSVFile {
-        String nodeFileName = "/Users/he/www/works/facturascripts-cpg/Core/Base/nodes.csv";
-        String relFileName = "/Users/he/www/works/facturascripts-cpg/Core/Base/rels.csv";
+        //parse command line
+        parseCommandLine(args);
+        String nodeFileName = cmdLine.getNodeFile();
+        String relFileName = cmdLine.getEdgeFile();
+
         // init input
         FileReader nodeFileReader = new FileReader(nodeFileName);
         FileReader relFileNameReadeer = new FileReader(relFileName);
@@ -58,6 +64,7 @@ public class Joern {
         MultiPairCSVWriterImpl csvWriter = new MultiPairCSVWriterImpl();
         csvWriter.openEdgeFile( ".", "cpg_edges.csv");
         Writer.setWriterImpl( csvWriter);
+
         // let's go... :)
         FunctionDef root_node;
         while((root_node = (FunctionDef)extractor.getNextFunction()) != null)
@@ -75,12 +82,31 @@ public class Joern {
             DDG ddg = ddgCreator.createForDefUseCFG(defUseCFG);
             csvDDGExporter.writeDDGEdges(ddg);
             // cg
-            //CGCreator.addFunctionDef(root_node);
+            CGCreator.addFunctionDef(root_node);
         }
         // cg
-        //CG cg = CGCreator.createCG();
-        //csvCGExporter.writeCGEdges(cg);
+        CG cg = CGCreator.createCG();
+        csvCGExporter.writeCGEdges(cg);
         csvWriter.closeEdgeFile();
     }
+
+    private static void parseCommandLine(String[] args) {
+        try
+        {
+            cmdLine.parseCommandLine(args);
+        }
+        catch (RuntimeException | ParseException e)
+        {
+            printHelpAndTerminate(e);
+        }
+    }
+
+    private static void printHelpAndTerminate(Exception e) {
+
+        System.err.println(e.getMessage());
+        cmdLine.printHelp();
+        System.exit(0);
+    }
+
 }
 

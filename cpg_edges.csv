@@ -1,0 +1,7 @@
+start	end	type	var
+3	6	FLOWS_TO	
+6	15	FLOWS_TO	
+15	23	FLOWS_TO	
+23	30	FLOWS_TO	
+30	4	FLOWS_TO	
+6	23	REACHES	a_id_frist

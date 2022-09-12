@@ -81,6 +81,15 @@ public abstract class ASTDefUseAnalyzer
 		try
 		{
 			UseDefEnvironment parentEnv = environmentStack.peek();
+			//!iohex add to index sensitive =================
+			if (astProvider.getTypeAsString().equals("ArrayIndexing"))
+			{
+				String sig = env.createSignature();
+				String arr = symbols.remove();
+				symbols.add(arr+sig);
+			}
+			//!iohex===========================
+
 			parentEnv.addChildSymbols(symbols, astProvider);
 		} catch (EmptyStackException ex)
 		{
@@ -88,4 +97,5 @@ public abstract class ASTDefUseAnalyzer
 			// Nothing to do.
 		}
 	}
+
 }
