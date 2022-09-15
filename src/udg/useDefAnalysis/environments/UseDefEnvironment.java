@@ -101,24 +101,44 @@ public class UseDefEnvironment
 	}
 
 	//!iohex================ add to archieve index sensitive ===========
-	public String createSignature() {
+	public String index_createSignature() {
 		String signature = "";
 		ASTProvider rChild = this.astProvider.getChild(1); // the child 1 of the ArrayIndex is the index expression.
-		signature = traverseAST(rChild, "");
+		signature = index_traverseAST(rChild, "");
 		return signature;
 	}
 
-	public String traverseAST(ASTProvider astNode, String sig) {
+	public String index_traverseAST(ASTProvider astNode, String sig) {
 		sig = sig + "_" + astNode.getEscapedCodeStr();
 		int numChildren = astNode.getChildCount();
 		for (int i = 0; i < numChildren; i++)
 		{
 			ASTProvider childProvider = astNode.getChild(i);
 			if (this.shouldTraverse(childProvider))
-				traverseAST(childProvider, sig);
+				index_traverseAST(childProvider, sig);
 		}
 		return sig;
 	}
-	//!iohex================ add to archieve index sensitive ===========
+
+
+	//!iohex================ add to archieve fields sensitive ===========
+	public String field_createSignature() {
+		String signature = "";
+		ASTProvider rChild = this.astProvider.getChild(1);
+		signature = field_traverseAST(rChild, "");
+		return signature;
+	}
+
+		public String field_traverseAST(ASTProvider astNode, String sig) {
+		sig = sig + "->" + astNode.getEscapedCodeStr();
+		int numChildren = astNode.getChildCount();
+		for (int i = 0; i < numChildren; i++)
+		{
+			ASTProvider childProvider = astNode.getChild(i);
+			if (this.shouldTraverse(childProvider))
+				index_traverseAST(childProvider, sig);
+		}
+		return sig;
+	}
 
 };

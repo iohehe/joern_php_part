@@ -81,20 +81,29 @@ public abstract class ASTDefUseAnalyzer
 		try
 		{
 			UseDefEnvironment parentEnv = environmentStack.peek();
-			//!iohex add to index sensitive =================
-			if (astProvider.getTypeAsString().equals("ArrayIndexing"))
+			//!iohex to add index sensitive =================
+			if (astProvider.getTypeAsString().equals("ArrayIndexing") && symbols.size()>0)
 			{
-				String sig = env.createSignature();
-				String arr = symbols.remove();
+				String sig = env.index_createSignature();
+			    String arr = symbols.remove();
 				symbols.add(arr+sig);
 			}
 			//!iohex===========================
+
+			//!iohex to add field sensitivity ================
+			if (astProvider.getTypeAsString().equals("PropertyExpression"))
+			{
+				String sig = env.field_createSignature();
+				String arr = symbols.remove();
+				symbols.add(arr+sig);
+			}
 
 			parentEnv.addChildSymbols(symbols, astProvider);
 		} catch (EmptyStackException ex)
 		{
 			// stack is empty, we've reached the root.
 			// Nothing to do.
+			//System.out.println(ex);
 		}
 	}
 
